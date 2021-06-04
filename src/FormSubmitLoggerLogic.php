@@ -30,10 +30,11 @@ class FormSubmitLoggerLogic
     {
         $result = $form_state->getValues();
 
-
+        /* make sure to only log the submit if it is relevant and not submits from clicking on links*/
         if (!in_array('views_exposed_form', $result)) {
             $this->messenger->addMessage('Thank You');
 
+            /* custom logic for logging of my custom radio form */
             if (array_key_first($result) === 'did_you_eat_today') {
                 if (reset($result) === '0') {
                     $radioResult = "Yes";
@@ -45,12 +46,14 @@ class FormSubmitLoggerLogic
                   '</code></pre>');
             }
 
+            /*custom logic for logging my custom text for */
             if (array_key_first($result) === 'text') {
                 $this->loggerFactory->get('Form Submit Log')
                 ->debug("Did you eat today - textform value:" . " " . '<pre><code>' .
                  print_r(reset($result), true) . '</code></pre>');
             }
 
+            /* logic to log all other forms as arrays to ensure all submitted values are captured */
             if (!array_key_first($result) === 'did_you_eat_today' && !array_key_first($result) === 'text') {
                 $this->loggerFactory->get('Form Submit Log')
                 ->debug('<pre><code>' . print_r($result, true) . '</code></pre>');
