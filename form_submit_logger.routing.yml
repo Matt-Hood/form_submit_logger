@@ -1,0 +1,14 @@
+form_submit_logger.default_form:
+  path: '/form_submit_logger/form/text'
+  defaults:
+    _form: '\Drupal\form_submit_logger\Form\TextForm'
+    _title: 'TextForm'
+  requirements:
+    _access: 'TRUE'
+form_submit_logger.radio_form:
+  path: '/form_submit_logger/form/radio'
+  defaults:
+    _form: '\Drupal\form_submit_logger\Form\RadioForm'
+    _title: 'RadioForm'
+  requirements:
+    _access: 'TRUE'

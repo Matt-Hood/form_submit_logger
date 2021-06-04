@@ -1,0 +1,4 @@
+services:
+    form_submit_logger.submit_logger:
+        class: Drupal\form_submit_logger\FormSubmitLoggerLogic
+        arguments: [ '@messenger', '@logger.factory']

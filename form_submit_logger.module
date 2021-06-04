@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains form_submit_logger.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Form\FormBase;
+
+/**
+ * @param $form
+ * @param FormStateInterface $form_state
+ * @param $form_id
+ *
+ * /**
+ *
+ * Implements hook_form_alter().
+ */
+
+function form_submit_logger_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  $form['actions']['submit']['#submit'][] = 'form_submit_logger_form_submit';
+}
+
+/**
+ * @param array $form
+ * @param FormStateInterface $form_state
+ */
+
+function form_submit_logger_form_submit(array $form, FormStateInterface $form_state)
+{
+  \Drupal::service('form_submit_logger.submit_logger')
+    ->handleSubmit($form, $form_state);
+}

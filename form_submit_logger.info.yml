@@ -1,0 +1,6 @@
+name: 'Form Submit Logger'
+type: module
+description: 'This module will log values of all form submissions'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Custom'
