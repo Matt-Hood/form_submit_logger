@@ -31,7 +31,7 @@ class FormSubmitLoggerLogic
         $result = $form_state->getValues();
 
         /* make sure to only log the submit if it is relevant and not submits from clicking on links*/
-        if (!in_array('views_exposed_form', $result)) {
+        if (in_array('views_exposed_form', $result, true) === false) {
             $this->messenger->addMessage('Thank You');
 
             /* custom logic for logging of my custom radio form */
