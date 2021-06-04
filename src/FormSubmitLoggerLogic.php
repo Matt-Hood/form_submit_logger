@@ -54,7 +54,7 @@ class FormSubmitLoggerLogic
             }
 
             /* logic to log all other forms as arrays to ensure all submitted values are captured */
-            if (!array_key_first($result) === 'did_you_eat_today' && !array_key_first($result) === 'text') {
+            if (array_key_first($result) !== 'did_you_eat_today' && array_key_first($result) !== 'text') {
                 $this->loggerFactory->get('Form Submit Log')
                 ->debug('<pre><code>' . print_r($result, true) . '</code></pre>');
             }
